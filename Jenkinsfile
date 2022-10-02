@@ -26,9 +26,10 @@ pipeline {
       stage('Sonarqube Analysis - SAST') {
             steps {
                   withSonarQubeEnv('SonarQube') {
-           sh "mvn sonar:sonar \
-                              -Dsonar.projectKey=maven-jenkins-pipeline \
-                        -Dsonar.host.url=http://34.173.74.192:9000" 
+           sh "mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=sravan-maven-project \
+  -Dsonar.host.url=http://23.100.43.124:9000 \
+  -Dsonar.login=sqp_452d87e0e9cf4bf09c94b42f14ce22267ce0356f" 
                 }
            timeout(time: 2, unit: 'MINUTES') {
                       script {
